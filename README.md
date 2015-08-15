@@ -1,2 +1,2 @@
-# DirektReports
-League of Legends Statistical/Analytical Web Application
+# APDelta
+Riot Games API Challenge 2.0 - Analysis of AP item changes
