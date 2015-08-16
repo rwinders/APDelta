@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en" ng-app="DirektReports">
+<html class="no-js" lang="en" ng-app="APDelta">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,17 +7,23 @@
     <link rel="stylesheet" href="stylesheets/app.css" />
     <script src="bower_components/modernizr/modernizr.js"></script>
     <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
     <script src="app/app.js"></script>
   </head>
   <body>
     <div class="row">
       <div class="large-12 columns">
-        <h1>Welcome to Direkt Reports</h1>
+        <h1>Welcome to AP Delta</h1>
       </div>
     </div>
 
+    <ng-view></ng-view>
+
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/foundation/js/foundation.min.js"></script>
+
+    <script type="text/javascript" src="app/controllers/APController.js"></script>
+
     <script>$(document).foundation()</script>
   </body>
 </html>
