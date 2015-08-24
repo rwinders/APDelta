@@ -21,7 +21,7 @@ fs.readFile('champions.json', 'utf8', function(err, data) {
 				"sightWardsBought": 0,
 				"wardsPlaced": 0,
 				"goldEarned": 0,
-				"wonGame": "",
+				"wonGames": 0,
 				"minionsKilled": 0,
 				"neutralMinionsKilled": 0,
 				"magicDamageDealt": 0,
