@@ -63,7 +63,7 @@ function matchRequest(matchNumber, url) {
 		var matchDetail = body;
 		var frames = matchDetail.timeline.frames;
 		var participants = matchDetail.participants;
-		updatePicked();
+		updatePicked(participants);
 		var purchaseAPEvents = [];
 		var participantsAP = {};
 		for(var i = 0; i < frames.length; i++) {
@@ -89,36 +89,48 @@ function matchRequest(matchNumber, url) {
 				}
 			}
 			else {
-				particpantsAP[purchaseAPEvents[i].participantId].items.push(purchaseAPEvents[i]);
+				participantsAP[purchaseAPEvents[i].participantId].items.push(purchaseAPEvents[i]);
 			}
 		}
 
+
 		for(participant in participantsAP) {
 			for(var i = 0; i < main_data_structure.length; i++) {
-				if(main_data_structure[i][participant.championId] != null) {
-					main_data_structure[i][participant.championId].kills += participant.stats.kills;
-					main_data_structure[i][participant.championId].deaths += participant.stats.deaths;
-					main_data_structure[i][participant.championId].assists += participant.stats.assists;
-					main_data_structure[i][participant.championId].visionWardsBought += participant.stats.visionWardsBoughtInGame;
-					main_data_structure[i][participant.championId].sightWardsBought += participant.stats.sightWardsBoughtInGame;
-					main_data_structure[i][participant.championId].wardsPlaced += participant.stats.wardsPlaced;
-					main_data_structure[i][participant.championId].goldEarned += participant.stats.goldEarned;
-					main_data_structure[i][participant.championId].minionsKilled += participant.stats.minionsKilled;
-					main_data_structure[i][participant.championId].neutralMinionsKilled += participant.stats.neutralMinionsKilled;
-					main_data_structure[i][participant.championId].magicDamageDealt += participant.stats.magicDamageDealt;
-					main_data_structure[i][participant.championId].totalDamageDealt += participant.stats.totalDamageDealt;
-					main_data_structure[i][participant.championId].magicDamageDealtToChampions += participant.stats.magicDamageDealtToChampions;
-					main_data_structure[i][participant.championId].totalDamageDealtToChampions += participant.stats.totalDamageDealtToChampions;
-					if(participant.stats.winner == true) {
-						main_data_structure[i][participant.championId].wonGames += 1;
+				if(main_data_structure[i][participantsAP[participant].championId] != null) {
+					main_data_structure[i][participantsAP[participant].championId].kills += participantsAP[participant].stats.kills;
+					main_data_structure[i][participantsAP[participant].championId].deaths += participantsAP[participant].stats.deaths;
+					main_data_structure[i][participantsAP[participant].championId].assists += participantsAP[participant].stats.assists;
+					main_data_structure[i][participantsAP[participant].championId].visionWardsBought += participantsAP[participant].stats.visionWardsBoughtInGame;
+					main_data_structure[i][participantsAP[participant].championId].sightWardsBought += participantsAP[participant].stats.sightWardsBoughtInGame;
+					main_data_structure[i][participantsAP[participant].championId].wardsPlaced += participantsAP[participant].stats.wardsPlaced;
+					main_data_structure[i][participantsAP[participant].championId].goldEarned += participantsAP[participant].stats.goldEarned;
+					main_data_structure[i][participantsAP[participant].championId].minionsKilled += participantsAP[participant].stats.minionsKilled;
+					main_data_structure[i][participantsAP[participant].championId].neutralMinionsKilled += participantsAP[participant].stats.neutralMinionsKilled;
+					main_data_structure[i][participantsAP[participant].championId].magicDamageDealt += participantsAP[participant].stats.magicDamageDealt;
+					main_data_structure[i][participantsAP[participant].championId].totalDamageDealt += participantsAP[participant].stats.totalDamageDealt;
+					main_data_structure[i][participantsAP[participant].championId].magicDamageDealtToChampions += participantsAP[participant].stats.magicDamageDealtToChampions;
+					main_data_structure[i][participantsAP[participant].championId].totalDamageDealtToChampions += participantsAP[participant].stats.totalDamageDealtToChampions;
+					if(participantsAP[participant].stats.winner == true) {
+						main_data_structure[i][participantsAP[participant].championId].wonGames += 1;
 					}
 
-					for(j = 0; j < participant.items.length; j++) {
+					for(var j = 0; j < participantsAP[participant].items.length; j++) {
 						//update item list with new item purchases.
+						main_data_structure[i][participantsAP[participant].championId].itemList[participantsAP[participant].items[j].itemId].buckets[Math.floor((participantsAP[participant].items[j].timestamp) / 15000)] += 1;
 					}
 				}
 			}
 		}
+
+		current_match++;
+		if(current_match === MATCHES_COUNT) {
+			fs.writeFile('main-data-structure.json', JSON.stringify(main_data_structure, null, 4), function (err) {
+				if (err) throw err;
+			  	console.log("file written");
+			});
+		}
+
+
 		/*match_details.push(body);
 		current_match++;
 		if(current_match === MATCHES_COUNT) {
@@ -128,11 +140,11 @@ function matchRequest(matchNumber, url) {
 }
 
 function matchTimeout(i, url) {
-	setTimeout(function() { matchRequest(url, i) }, i * 1250);
+	setTimeout(function() { matchRequest(i, url) }, i * 1250);
 }
 
 function isAPItem(itemId) {
-	if(items.itemId != null) {
+	if(items[itemId] != null) {
 		return true;
 	}
 	else {
@@ -143,8 +155,8 @@ function isAPItem(itemId) {
 function updatePicked(participants) {
 	for(var i = 0; i < main_data_structure.length; i++) {
 		for(var j = 0; j < participants.length; j++) {
-			if(main_data_structure[i][participants.participantId] != null) {
-				main_data_structure[i][participants.participantId].gamesPicked++;
+			if(main_data_structure[i][participants[j].championId] != null) {
+				main_data_structure[i][participants[j].championId].gamesPicked++;
 			}
 		}
 	}
