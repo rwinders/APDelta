@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require('fs');
+var mongodb = require('mongodb');
 
 var app = express();
 
@@ -24,8 +26,29 @@ app.use("/stylesheets", express.static(__dirname + "/src/stylesheets"));
 app.use("/js", express.static(__dirname + "/src/js"));
 app.use("/app", express.static(__dirname + "/src/app"));
 
+var raw_credentials = fs.readFileSync('db_scripts/credentials.json', 'utf8');
+var credentials = JSON.parse(raw_credentials);
+var uri = credentials.MongoUrl;
+
 app.get('/', function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
+})
+
+app.post('/champion', function(req, res) {
+  var id = req.body.id;
+  var region = req.body.region;
+  var patch = req.body.patch;
+  mongodb.MongoClient.connect(uri, function(err, db) {
+    if (err) throw err;
+    var cursor = db.collection(region + "-ranked-" + patch).find( { "id": id } );
+    cursor.each(function(err, doc) {
+      if (err) throw err;
+      if(doc != null) {
+        db.close();
+        res.json(doc);
+      }
+    });
+  });
 })
 
 // catch 404 and forward to error handler

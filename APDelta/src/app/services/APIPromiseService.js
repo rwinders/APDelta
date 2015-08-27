@@ -1,5 +1,5 @@
 app.factory('APIPromiseService', [ '$http', function($http) {
-	var API_KEY = "522499d5-cb38-4e8c-a979-adf2526ab310";
+	var API_KEY = API_KEY;
 	var BASE_URL = "https://na.api.pvp.net/api/lol/";
 
 	//API CALLS
@@ -8,8 +8,20 @@ app.factory('APIPromiseService', [ '$http', function($http) {
 			method: 'GET',
 			url: url,
 			headers: {
-				'Content-Type': 'json'
+				'Content-Type': 'application/json'
 			}
+		}
+		return $http(req);
+	}
+
+	function requestChampionDataPromise(url, data) {
+		var req = {
+			method: 'POST',
+			url: url,
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			data: data
 		}
 		return $http(req);
 	}
@@ -20,10 +32,19 @@ app.factory('APIPromiseService', [ '$http', function($http) {
 		return url;
 	}
 
+	function genURLGetChampionData() {
+		var url = SERVER_URL + "/champion";
+		return url;
+	}
+
 	return {
 		getChampions: function() {
 			var url = genUrlGetChampions();
 			return requestChampionsPromise(url);
+		},
+		getChampionData: function(data) {
+			var url = genURLGetChampionData();
+			return requestChampionDataPromise(url, data);
 		}
 	}
 }]);

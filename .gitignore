@@ -1,2 +1,3 @@
 APDelta/db_scripts/match_ids/*
 APDelta/db_scripts/credentials.json
+APDelta/app/constants/strings.js
