@@ -39,12 +39,12 @@ fs.readFile('credentials.json', 'utf8', function(err, data) {
 				console.log("Read main-data-structure.json")
 				main_data_structure = JSON.parse(data);
 				
-				fs.readFile('match_ids/5.11/RANKED_SOLO/KR.json', 'utf8', function(err, data) {
+				fs.readFile('match_ids/5.14/RANKED_SOLO/EUNE.json', 'utf8', function(err, data) {
 					if(err)	throw err;
 					console.log("Read NA.json")
 					match_ids = JSON.parse(data);
 					for(var i = MATCH_START; i < MATCHES_END; i++) {
-						var matchUrl = "https://kr.api.pvp.net/api/lol/kr/v2.2/match/" + match_ids[i]  + "?api_key=" + API_KEY + "&includeTimeline=true";
+						var matchUrl = "https://eune.api.pvp.net/api/lol/eune/v2.2/match/" + match_ids[i]  + "?api_key=" + API_KEY + "&includeTimeline=true";
 						matchTimeout(i - MATCH_START, matchUrl);
 					}
 				})

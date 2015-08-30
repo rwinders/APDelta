@@ -186,7 +186,7 @@ select {
 /* line 228, ../bower_components/foundation/scss/foundation/components/_grid.scss */
 .row {
   margin: 0 auto;
-  max-width: 62.5rem;
+  max-width: 87.5rem;
   width: 100%;
 }
 /* line 172, ../bower_components/foundation/scss/foundation/components/_global.scss */
@@ -5967,7 +5967,7 @@ ul.pagination li {
   .reveal-modal {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 80%;
   }
@@ -5995,7 +5995,7 @@ ul.pagination li {
   .reveal-modal.tiny {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 30%;
   }
@@ -6005,7 +6005,7 @@ ul.pagination li {
   .reveal-modal.small {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 40%;
   }
@@ -6015,7 +6015,7 @@ ul.pagination li {
   .reveal-modal.medium {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 60%;
   }
@@ -6025,7 +6025,7 @@ ul.pagination li {
   .reveal-modal.large {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 70%;
   }
@@ -6035,7 +6035,7 @@ ul.pagination li {
   .reveal-modal.xlarge {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 95%;
   }
@@ -6055,7 +6055,7 @@ ul.pagination li {
   .reveal-modal.full {
     left: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
     right: 0;
     width: 100%;
   }
@@ -7392,7 +7392,7 @@ meta.foundation-mq-topbar {
   .contain-to-grid .top-bar {
     margin-bottom: 0;
     margin: 0 auto;
-    max-width: 62.5rem;
+    max-width: 87.5rem;
   }
 
   /* line 528, ../bower_components/foundation/scss/foundation/components/_top-bar.scss */
@@ -9438,4 +9438,47 @@ th.hide-for-touch {
   .show-for-print {
     display: none !important;
   }
+}
+/* line 42, ../scss/app.scss */
+#champion-row {
+  margin-top: 20px;
+}
+
+/* line 46, ../scss/app.scss */
+#item-chart {
+  height: 600px;
+  width: 900px;
+}
+
+/* line 51, ../scss/app.scss */
+#champion-dropdown {
+  width: 1000px;
+}
+
+/* line 55, ../scss/app.scss */
+#champion-dropdown li {
+  width: 100px;
+}
+
+/* line 59, ../scss/app.scss */
+#region-dropdown {
+  display: inline;
+  width: 10%;
+}
+
+/* line 64, ../scss/app.scss */
+#patch-radio {
+  display: inline;
+}
+
+/* line 68, ../scss/app.scss */
+#item-dropdown {
+  display: inline;
+  margin-left: 20px;
+  width: 25%;
+}
+
+/* line 74, ../scss/app.scss */
+.stats-row {
+  margin-top: 15px;
 }

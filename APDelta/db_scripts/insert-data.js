@@ -2,12 +2,12 @@ var mongodb = require('mongodb');
 var fs = require('fs');
 
 var uri =  "";
-var collection = "euw-ranked-5-14"
+var collection = "eune-ranked-5-14"
 
 fs.readFile('credentials.json', 'utf8', function(err, data) {
 	if(err)	throw err;
 	var credentials = JSON.parse(data);
-	fs.readFile('euw-ranked-5-14.json', 'utf8', function(err, data) {
+	fs.readFile('eune-ranked-5-14.json', 'utf8', function(err, data) {
 		if(err)	throw err;
 		var matchDetails = JSON.parse(data);
 		uri = credentials.MongoUrl;

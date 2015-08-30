@@ -1,16 +1,17 @@
-app.controller('APDeltaController', ['$scope', 'APDeltaService', function($scope, APDeltaService) {
-	var data = {
-		"id": "1",
-		"region": "na",
-		"patch": "5-11"
-	};
+app.controller('APDeltaController', ['$scope', '$rootScope', 'APDeltaService', function($scope, $rootScope, APDeltaService) {
+	$scope.idToChampions = idToChampions;
+	$scope.championsToId = championsToId;
+	$scope.champions = [];
 
-	$scope.getChampions = function() {
-		APDeltaService.getChampions();
+	$scope.init = function() {
+		for(champion in $scope.championsToId) {
+			$scope.champions.push(champion);
+		}
 	}
 
-	$scope.getChampionData = function() {
-		APDeltaService.getChampionData(data);
+	$scope.createItemChart = function(champion) {
+		var id = championsToId[champion];
+		setTimeout(function() { $rootScope.$broadcast('championClicked', id); }, 100);
 	}
 
 }]);

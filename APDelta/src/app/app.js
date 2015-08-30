@@ -2,7 +2,11 @@ var app = angular.module('APDelta', ['ngRoute']);
 
 app.config(function ($routeProvider) {
 	$routeProvider.when('/', {
-		controller: 'APDeltaController',
-		templateUrl: '/app/partials/apdelta.html'
+		controller: 'ItemsController',
+		templateUrl: '/app/partials/items.html'
 	});
+	$routeProvider.when('/champions', {
+		controller: 'ChampionsController',
+		templateUrl: '/app/partials/champions.html'
+	})
 });

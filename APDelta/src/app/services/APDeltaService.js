@@ -8,12 +8,12 @@ app.factory('APDeltaService', ['APIPromiseService', function(APIPromiseService) 
 					console.log("error");
 				});
 		},
-		getChampionData: function(data) {
+		getChampionData: function(data, drawChart, successCallback, failCallback) {
 			APIPromiseService.getChampionData(data)
 				.then(function(data) {
-					console.log(data);
+					successCallback(data, drawChart);
 				}, function(error) {
-					console.log("error");
+					failCallback(error);
 				});
 		}
 	}

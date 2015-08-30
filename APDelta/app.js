@@ -25,6 +25,7 @@ app.use("/bower_components", express.static(__dirname + "/src/bower_components")
 app.use("/stylesheets", express.static(__dirname + "/src/stylesheets"));
 app.use("/js", express.static(__dirname + "/src/js"));
 app.use("/app", express.static(__dirname + "/src/app"));
+app.use("/images", express.static(__dirname + "/src/images"));
 
 var raw_credentials = fs.readFileSync('db_scripts/credentials.json', 'utf8');
 var credentials = JSON.parse(raw_credentials);

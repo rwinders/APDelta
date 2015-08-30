@@ -38,3 +38,39 @@
 //   "foundation/components/type",
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
+
+#champion-row {
+	margin-top: 20px;
+}
+
+#item-chart {
+	height: 600px;
+	width: 900px;
+}
+
+#champion-dropdown {
+	width: 1000px;
+}
+
+#champion-dropdown li {
+	width: 100px;
+}
+
+#region-dropdown {
+	display: inline;
+	width: 10%;
+}
+
+#patch-radio {
+	display: inline;
+}
+
+#item-dropdown {
+	display: inline;
+	margin-left: 20px;
+	width: 25%;
+}
+
+.stats-row {
+	margin-top: 15px;
+}

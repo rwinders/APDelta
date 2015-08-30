@@ -1,0 +1,56 @@
+<div class="row" id="champion-row">
+	<div class="large-12 columns">
+		<div class="row">
+			<div class="large-3 columns">
+				<img ng-src="images/champion_loading_screens/{{currentChampion}}.jpg"/>
+			</div>
+			<div class="large-9 columns">
+				<div id="item-chart"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="stats-row">
+				<div class="large-4 columns">
+					<div class="panel" ng-show="showTable">
+						<table>
+							<thead>
+						    	<tr>
+						     		<th>Per Game Averages</th>
+						    		<th>5.11</th>
+						    		<th>5.14</th>
+						    	</tr>
+						 	</thead>
+						  	<tbody>
+						   		<tr ng-repeat="stat in stats">
+						   			<td>{{stat.stat}}</td>
+						   			<td>{{stat["5-11"]}}</td>
+						   			<td>{{stat["5-14"]}}</td>
+						    	</tr>
+						  	</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="large-8 columns" ng-show="showTable">
+					<!-- Change Patch -->
+					<label id="patch-radio">Patch: </label>
+	      			<input id="radio511" type="radio" name="patch" value="5-11" ng-model="patch" ng-change="changePatch()"><label for="radio511">5.11</label>
+	      			<input id="radio514" type="radio" name="patch" value="5-14" ng-model="patch" ng-change="changePatch()"><label for="radio514">5.14</label>
+
+	      			<!-- Change Region -->
+		        	<select ng-model="region" ng-change="changeRegion()" id="region-dropdown">
+		          		<option value="na">NA</option>
+		          		<option value="euw">EUW</option>
+		          		<option value="eune">EUNE</option>
+		          		<option value="kr">KR</option>
+		        	</select>
+
+	      			<!-- Change Item -->
+	      			<select ng-model="item" ng-change="changeItem()" id="item-dropdown">
+	      				<option ng-repeat="(key, value) in idToItems">{{value}}</option>
+	      			</select>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

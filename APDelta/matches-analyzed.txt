@@ -2,3 +2,7 @@ NA Ranked 5-11: 9598
 NA Ranked 5-14: 9979
 EUW Ranked 5-11: 9286
 EUW Ranked 5-14: 9944
+EUNE Ranked 5-11: 9973
+EUNE Ranked 5-14: 8975
+KR Ranked 5-11: 9912
+KR Ranked 5-14: 9986
