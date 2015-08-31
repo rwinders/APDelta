@@ -1,5 +1,15 @@
 var API_KEY = "522499d5-cb38-4e8c-a979-adf2526ab310";
 var SERVER_URL = "http://127.0.0.1:3000";
+var totalGames = {
+    "na-5-11": 9598,
+    "na-5-14": 9979,
+    "euw-5-11": 9286,
+    "euw-5-14": 9944,
+    "eune-5-11": 9973,
+    "eune-5-14": 8975,
+    "kr-5-11": 9912,
+    "kr-5-14": 9986
+}
 var idToItems = {
     "1026": "Blasting Wand",
     "1052": "Amplifying Tome",
@@ -23,7 +33,6 @@ var idToItems = {
     "3113": "Aether Wisp",
     "3115": "Nashor's Tooth",
     "3116": "Rylai's Crystal Scepter",
-    "3124": "Guinsoo's Rageblade",
     "3135": "Void Staff",
     "3136": "Haunting Guise",
     "3145": "Hextech Revolver",
@@ -40,11 +49,7 @@ var idToItems = {
     "3285": "Luden's Echo",
     "3290": "Twin Shadows",
     "3303": "Spellthief's Edge",
-    "3504": "Ardent Censer",
-    "3708": "Enchantment: Runeglaive",
-    "3716": "Enchantment: Runeglaive",
-    "3720": "Enchantment: Runeglaive",
-    "3724": "Enchantment: Runeglaive"
+    "3504": "Ardent Censer"
 }
 var idToChampions = {
     "1": "Annie",

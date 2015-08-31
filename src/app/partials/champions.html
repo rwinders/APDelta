@@ -2,39 +2,16 @@
 	<div class="large-12 columns">
 		<div class="row">
 			<div class="large-3 columns">
-				<img ng-src="images/champion_loading_screens/{{currentChampion}}.jpg"/>
+				<img id="champion-image" ng-if="currentChampion != null" ng-src="images/champion_loading_screens/{{currentChampion}}.jpg"/>
+				<h4 id="champion-name">{{currentChampion}}</h4>
 			</div>
 			<div class="large-9 columns">
-				<div id="item-chart"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="stats-row">
-				<div class="large-4 columns">
-					<div class="panel" ng-show="showTable">
-						<table>
-							<thead>
-						    	<tr>
-						     		<th>Per Game Averages</th>
-						    		<th>5.11</th>
-						    		<th>5.14</th>
-						    	</tr>
-						 	</thead>
-						  	<tbody>
-						   		<tr ng-repeat="stat in stats">
-						   			<td>{{stat.stat}}</td>
-						   			<td>{{stat["5-11"]}}</td>
-						   			<td>{{stat["5-14"]}}</td>
-						    	</tr>
-						  	</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="large-8 columns" ng-show="showTable">
+				<div id="chart-options" ng-show="showTable">
 					<!-- Change Patch -->
 					<label id="patch-radio">Patch: </label>
 	      			<input id="radio511" type="radio" name="patch" value="5-11" ng-model="patch" ng-change="changePatch()"><label for="radio511">5.11</label>
 	      			<input id="radio514" type="radio" name="patch" value="5-14" ng-model="patch" ng-change="changePatch()"><label for="radio514">5.14</label>
+	      			<input id="radioboth" type="radio" name="patch" value="both" ng-model="patch" ng-change="changePatch()"><label for="radioboth">5.11 & 5.14</label>
 
 	      			<!-- Change Region -->
 		        	<select ng-model="region" ng-change="changeRegion()" id="region-dropdown">
@@ -48,7 +25,61 @@
 	      			<select ng-model="item" ng-change="changeItem()" id="item-dropdown">
 	      				<option ng-repeat="(key, value) in idToItems">{{value}}</option>
 	      			</select>
-
+	      		</div>
+				<div id="item-chart"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="stats-row">
+				<div class="large-4 columns">
+					<div class="panel" ng-show="showTable">
+						<table>
+							<thead>
+						    	<tr>
+						     		<th width="40%">Per Game Averages</th>
+						    		<th>5.11</th>
+						    		<th>5.14</th>
+						    	</tr>
+						 	</thead>
+						  	<tbody>
+						   		<tr ng-repeat="stat in stats">
+						   			<td>{{stat.stat}}</td>
+						   			<td>
+						   				<i ng-if="(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-up"></i>
+						   				<i ng-if="!(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-down"></i>
+						   				{{stat["5-11"]}}
+						   			</td>
+						   			<td>
+						   				<i ng-if="!(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-up"></i>
+						   				<i ng-if="(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-down"></i>
+						   				{{stat["5-14"]}}
+						   			</td>
+						    	</tr>
+						  	</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="large-8 columns" ng-show="showTable">
+					<div class="panel" ng-show="showTable">
+		      			<div id="item-table">
+		      				<table style="width: 100%">
+								<thead>
+							    	<tr>
+							     		<th>Item</th>
+							    		<th width="45%">Average Time Bought 5.11</th>
+							    		<th width="45%">Average Time Bought 5.14</th>
+							    	</tr>
+							 	</thead>
+							  	<tbody>
+							   		<tr ng-repeat="itemStat in itemStats">
+							   			<td><img class="item-icon" ng-src="images/item_icons/{{itemStat.name}}.png" /></td>
+							   			<td>{{itemStat.avgPurchased511}}</td>
+							   			<td>{{itemStat.avgPurchased514}}</td>
+							    	</tr>
+							  	</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

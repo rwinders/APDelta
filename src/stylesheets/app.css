@@ -9482,3 +9482,42 @@ th.hide-for-touch {
 .stats-row {
   margin-top: 15px;
 }
+
+/* line 78, ../scss/app.scss */
+#champion-name {
+  text-align: center;
+  margin-top: 0px;
+  color: #dedede;
+  background-color: #121212;
+}
+
+/* line 85, ../scss/app.scss */
+#champion-image {
+  width: 100%;
+}
+
+/* line 89, ../scss/app.scss */
+.fa-chevron-up {
+  margin-right: 5px;
+}
+
+/* line 93, ../scss/app.scss */
+.fa-chevron-down {
+  margin-right: 5px;
+}
+
+/* line 97, ../scss/app.scss */
+.item-icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* line 102, ../scss/app.scss */
+table tr th {
+  text-align: center;
+}
+
+/* line 106, ../scss/app.scss */
+table tr td {
+  text-align: center;
+}
