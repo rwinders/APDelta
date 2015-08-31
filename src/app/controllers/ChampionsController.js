@@ -11,6 +11,7 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 	$scope.idToItems = idToItems;
 	$scope.itemsToId = itemsToId;
 	$scope.item = "Doran's Ring"
+	$scope.items = [];
 	$scope.itemStats = [];
 
 	var got511 = false;
@@ -20,22 +21,13 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 	var chart = new google.charts.Bar(document.getElementById('item-chart'));
 
 	secondsToMinutes = function(time) {
-		// var minutes = Math.floor(time / 60);
-		// var seconds = time - minutes * 60;
-		// if(seconds == 0) {
-		// 	seconds = "00"
-		// }
-		// return minutes + ":" + seconds;
-		// Minutes and seconds
 		var mins = ~~(time / 60);
 		var secs = time % 60;
 
-		// Hours, minutes and seconds
 		var hrs = ~~(time / 3600);
 		var mins = ~~((time % 3600) / 60);
 		var secs = time % 60;
 
-		// Output like "1:01" or "4:03:59" or "123:03:59"
 		ret = "";
 
 		if (hrs > 0)
@@ -63,18 +55,24 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 			"region": "na",
 			"patch": "5-14"
 		}
+		for(item in itemsToId) {
+			$scope.items.push({
+				"id": itemsToId[item],
+				"name": item
+			});
+		}
 		$scope.getChampionData511(data511, true);
 		$scope.getChampionData514(data514, false);
 	});
 
 	$scope.getChampionData511 = function(data, drawChart) {
 		got511 = false;
-		APDeltaService.getChampionData(data, drawChart, getChampionData511Success, getChampionDataFail);
+		APDeltaService.getData(data, drawChart, getChampionData511Success, getChampionDataFail);
 	}
 
 	$scope.getChampionData514 = function(data, drawChart) {
 		got514 = false;
-		APDeltaService.getChampionData(data, drawChart, getChampionData514Success, getChampionDataFail);
+		APDeltaService.getData(data, drawChart, getChampionData514Success, getChampionDataFail);
 	}
 
 	getChampionData511Success = function(data, drawChart) {
@@ -84,6 +82,10 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 		if(got511 & got514) {
 			constructStats();
 			constructItemStats();
+			if($scope.patch == "both") {
+				$scope.createItemChart($scope.championData511.data.data.itemList[$scope.itemsToId[$scope.item]],
+								       $scope.championData514.data.data.itemList[$scope.itemsToId[$scope.item]])
+			}
 		}
 		if(drawChart) {
 			$scope.createItemChart(data.data.data.itemList[$scope.itemsToId[$scope.item]])
@@ -97,6 +99,10 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 		if(got511 && got514) {
 			constructStats();
 			constructItemStats();
+			if($scope.patch == "both") {
+				$scope.createItemChart($scope.championData511.data.data.itemList[$scope.itemsToId[$scope.item]],
+								       $scope.championData514.data.data.itemList[$scope.itemsToId[$scope.item]])
+			}
 		}
 		if(drawChart) {
 			$scope.createItemChart(data.data.data.itemList[$scope.itemsToId[$scope.item]])
@@ -127,13 +133,10 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 			dataArray.push(entry);
 		}
 		var chartData = google.visualization.arrayToDataTable(dataArray);
-		var options = {
-			chart: {
-				title: itemList1.name
-			},
-			animation: {
-				duration: 1000,
-				easing: "in",
+		var options = {}
+		if ($scope.patch == "5-14") {
+			options = {
+				colors: ['#F44336']
 			}
 		}
 		chart.draw(chartData, options);
@@ -188,6 +191,7 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 	}
 
 	constructItemStats = function() {
+		$scope.itemStats = [];
 		for(item in $scope.championData511.data.data.itemList) {
 			if($scope.idToItems[item]) {
 				var timePurchased511 = 0;
@@ -230,6 +234,21 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 	}
 
 	constructStats = function() {
+		$scope.stats.push({
+			"stat": "Win Rate",
+			"5-11": ((($scope.championData511.data.data.wonGames / $scope.championData511.data.data.gamesPicked) * 100).toFixed(2)) + "%",
+			"5-14": ((($scope.championData514.data.data.wonGames / $scope.championData514.data.data.gamesPicked) * 100).toFixed(2)) + "%"
+		})
+		$scope.stats.push({
+			"stat": "Pick Rate",
+			"5-11": ((($scope.championData511.data.data.gamesPicked / totalGames[$scope.region + "-" + $scope.patch]) * 100).toFixed(2)) + "%",
+			"5-14": ((($scope.championData514.data.data.gamesPicked / totalGames[$scope.region + "-" + $scope.patch]) * 100).toFixed(2)) + "%"
+		})
+		$scope.stats.push({
+			"stat": "Games Picked",
+			"5-11": $scope.championData511.data.data.gamesPicked,
+			"5-14": $scope.championData514.data.data.gamesPicked
+		})
 		$scope.stats.push({
 			"stat": "Kills",
 			"5-11": ($scope.championData511.data.data.kills / $scope.championData511.data.data.gamesPicked).toFixed(2),
@@ -294,16 +313,6 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 			"stat": "Total Damage Dealt To Champions",
 			"5-11": ($scope.championData511.data.data.totalDamageDealtToChampions / $scope.championData511.data.data.gamesPicked).toFixed(0),
 			"5-14": ($scope.championData514.data.data.totalDamageDealtToChampions / $scope.championData514.data.data.gamesPicked).toFixed(0)
-		})
-		$scope.stats.push({
-			"stat": "Pick Rate",
-			"5-11": ((($scope.championData511.data.data.gamesPicked / totalGames[$scope.region + "-" + $scope.patch]) * 100).toFixed(2)) + "%",
-			"5-14": ((($scope.championData514.data.data.gamesPicked / totalGames[$scope.region + "-" + $scope.patch]) * 100).toFixed(2)) + "%"
-		})
-		$scope.stats.push({
-			"stat": "Win Rate",
-			"5-11": ((($scope.championData511.data.data.wonGames / $scope.championData511.data.data.gamesPicked) * 100).toFixed(2)) + "%",
-			"5-14": ((($scope.championData514.data.data.wonGames / $scope.championData514.data.data.gamesPicked) * 100).toFixed(2)) + "%"
 		})
 		$scope.showTable = true;
 	}

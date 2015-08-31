@@ -35,7 +35,7 @@ app.get('/', function(req, res) {
   res.sendFile(__dirname + "/views/index.html");
 })
 
-app.post('/champion', function(req, res) {
+app.post('/data', function(req, res) {
   var id = req.body.id;
   var region = req.body.region;
   var patch = req.body.patch;

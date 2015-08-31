@@ -1,5 +1,6 @@
 <div class="row" id="champion-row">
-	<div class="large-12 columns">
+	<div class="large-12 columns col">
+		<div class="push-down"></div>
 		<div class="row">
 			<div class="large-4 columns">
 				<img id="champion-image" ng-if="currentChampion != null" ng-src="images/champion_loading_screens/{{currentChampion}}.jpg"/>
@@ -23,7 +24,7 @@
 
 	      			<!-- Change Item -->
 	      			<select ng-model="item" ng-change="changeItem()" id="item-dropdown">
-	      				<option ng-repeat="(key, value) in idToItems">{{value}}</option>
+	      				<option ng-repeat="item in items | orderBy:'name'">{{item.name}}</option>
 	      			</select>
 	      		</div>
 				<div id="item-chart"></div>
@@ -44,11 +45,7 @@
 						  	<tbody>
 						   		<tr ng-repeat="stat in stats">
 						   			<td>{{stat.stat}}</td>
-						   			<td>
-						   				<i ng-if="(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-up"></i>
-						   				<i ng-if="!(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-down"></i>
-						   				{{stat["5-11"]}}
-						   			</td>
+						   			<td> {{stat["5-11"]}}</td>
 						   			<td>
 						   				<i ng-if="!(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-up"></i>
 						   				<i ng-if="(stat['5-11'] > stat['5-14'])" class="fa fa-chevron-down"></i>
@@ -65,14 +62,16 @@
 		      				<table style="width: 100%">
 								<thead>
 							    	<tr>
+							    		<th>Icon</th>
 							     		<th>Item</th>
-							    		<th width="45%">Average Time Bought 5.11</th>
-							    		<th width="45%">Average Time Bought 5.14</th>
+							    		<th>Average Time Bought 5.11</th>
+							    		<th>Average Time Bought 5.14</th>
 							    	</tr>
 							 	</thead>
 							  	<tbody>
-							   		<tr ng-repeat="itemStat in itemStats">
+							   		<tr ng-repeat="itemStat in itemStats | orderBy:'name'">
 							   			<td><img class="item-icon" ng-src="images/item_icons/{{itemStat.name}}.png" /></td>
+							   			<td>{{itemStat.name}}</td>
 							   			<td>{{itemStat.avgPurchased511}}</td>
 							   			<td>{{itemStat.avgPurchased514}}</td>
 							    	</tr>

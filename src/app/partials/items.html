@@ -1,0 +1,48 @@
+<div class="row" id="item-row" ng-init="init()">
+	<div class="large-12 columns col">
+		<div class="push-down"></div>
+		<div id="chart-options" ng-show="showTable">
+			<!-- Change Patch -->
+			<label id="patch-radio">Patch: </label>
+  			<input id="radio511" type="radio" name="patch" value="5-11" ng-model="patch" ng-change="changePatch()"><label for="radio511">5.11</label>
+  			<input id="radio514" type="radio" name="patch" value="5-14" ng-model="patch" ng-change="changePatch()"><label for="radio514">5.14</label>
+  			<input id="radioboth" type="radio" name="patch" value="both" ng-model="patch" ng-change="changePatch()"><label for="radioboth">5.11 & 5.14</label>
+
+  			<!-- Change Region -->
+        	<select ng-model="region" ng-change="changeRegion()" id="region-dropdown">
+          		<option value="na">NA</option>
+          		<option value="euw">EUW</option>
+          		<option value="eune">EUNE</option>
+          		<option value="kr">KR</option>
+        	</select>
+
+  			<!-- Change Item -->
+  			<select ng-model="item" ng-change="changeItem()" id="item-dropdown">
+  				<option ng-repeat="item in items | orderBy:'name'">{{item.name}}</option>
+  			</select>
+  		</div>
+		<div id="main-item-chart"></div>
+		<div class="panel" ng-show="showTable">
+  			<div id="item-table">
+  				<table style="width: 100%">
+					<thead>
+				    	<tr>
+				    		<th>Icon</th>
+				     		<th>Item</th>
+				    		<th>Average Time Bought 5.11</th>
+				    		<th>Average Time Bought 5.14</th>
+				    	</tr>
+				 	</thead>
+				  	<tbody>
+				   		<tr ng-repeat="itemStat in itemStats | orderBy:'name'">
+				   			<td><img class="item-icon" ng-src="images/item_icons/{{itemStat.name}}.png" /></td>
+				   			<td>{{itemStat.name}}</td>
+				   			<td>{{itemStat.avgPurchased511}}</td>
+				   			<td>{{itemStat.avgPurchased514}}</td>
+				    	</tr>
+				  	</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

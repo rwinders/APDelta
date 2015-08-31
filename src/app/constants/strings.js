@@ -47,7 +47,6 @@ var idToItems = {
     "3197": "The Hex Core mk-2",
     "3198": "Perfect Hex Core",
     "3285": "Luden's Echo",
-    "3290": "Twin Shadows",
     "3303": "Spellthief's Edge",
     "3504": "Ardent Censer"
 }
@@ -188,7 +187,7 @@ var itemsToId = {
     "Elixir of Sorcery": "2139",
     "Abyssal Scepter": "3001",
     "Archangel's Staff": "3003",
-    "Twin Shadows": "3290",
+    "Twin Shadows": "3023",
     "Iceborn Gauntlet": "3025",
     "Rod of Ages": "3027",
     "Mejai's Soulstealer": "3041",
@@ -219,8 +218,7 @@ var itemsToId = {
     "Perfect Hex Core": "3198",
     "Luden's Echo": "3285",
     "Spellthief's Edge": "3303",
-    "Ardent Censer": "3504",
-    "Enchantment: Runeglaive": "3724"
+    "Ardent Censer": "3504"
 }
 
 var championsToId = {

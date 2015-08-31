@@ -9,4 +9,7 @@ app.config(function ($routeProvider) {
 		controller: 'ChampionsController',
 		templateUrl: '/app/partials/champions.html'
 	})
+	$routeProvider.when('/about', {
+		templateUrl: '/app/partials/about.html'
+	})
 });

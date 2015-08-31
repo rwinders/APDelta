@@ -39,14 +39,26 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
+body {
+	background-color: hsla(256, 35%, 65%, 1);
+}
 
-#champion-row {
-	margin-top: 20px;
+.col {
+	background-color: hsl(0, 0%, 100%);
+	border-width: 0px 1px 1px 1px;
+	border-style: solid;
+	border-color: hsl(0, 0%, 20%);
 }
 
 #item-chart {
 	height: 650px;
-	width: 800px;
+	width: 770px;
+}
+
+#main-item-chart {
+	width: 1170px;
+	height: 800px;
+	margin-bottom: 20px;
 }
 
 #champion-dropdown {
@@ -62,8 +74,13 @@
 	width: 10%;
 }
 
+.push-down {
+	height: 20px;
+}
+
 #patch-radio {
 	display: inline;
+	margin-left: 50px;
 }
 
 #item-dropdown {
@@ -89,10 +106,12 @@
 
 .fa-chevron-up {
 	margin-right: 5px;
+	color: #2ecc71;
 }
 
 .fa-chevron-down {
 	margin-right: 5px;
+	color: #e74c3c;
 }
 
 .item-icon {
