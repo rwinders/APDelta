@@ -205,7 +205,7 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 					timePurchased514 += i * 15 * $scope.championData514.data.data.itemList[item].buckets[i];
 					purchased514 += $scope.championData514.data.data.itemList[item].buckets[i];
 				}
-				
+
 				if(purchased511 == 0) {
 					avgTimePurchased511 = "Never Purchased";
 				}
@@ -262,8 +262,8 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 		})
 		$scope.stats.push({
 			"stat": "Gold Earned",
-			"5-11": ($scope.championData511.data.data.goldEarned / $scope.championData511.data.data.gamesPicked).toFixed(2),
-			"5-14": ($scope.championData514.data.data.goldEarned / $scope.championData514.data.data.gamesPicked).toFixed(2)
+			"5-11": ($scope.championData511.data.data.goldEarned / $scope.championData511.data.data.gamesPicked).toFixed(0),
+			"5-14": ($scope.championData514.data.data.goldEarned / $scope.championData514.data.data.gamesPicked).toFixed(0)
 		})
 		$scope.stats.push({
 			"stat": "Minions Killed",
@@ -277,23 +277,23 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 		})
 		$scope.stats.push({
 			"stat": "Magic Damage Dealt",
-			"5-11": ($scope.championData511.data.data.magicDamageDealt / $scope.championData511.data.data.gamesPicked).toFixed(2),
-			"5-14": ($scope.championData514.data.data.magicDamageDealt / $scope.championData514.data.data.gamesPicked).toFixed(2)
+			"5-11": ($scope.championData511.data.data.magicDamageDealt / $scope.championData511.data.data.gamesPicked).toFixed(0),
+			"5-14": ($scope.championData514.data.data.magicDamageDealt / $scope.championData514.data.data.gamesPicked).toFixed(0)
 		})
 		$scope.stats.push({
 			"stat": "Total Damage Dealt",
-			"5-11": ($scope.championData511.data.data.totalDamageDealt / $scope.championData511.data.data.gamesPicked).toFixed(2),
-			"5-14": ($scope.championData514.data.data.totalDamageDealt / $scope.championData514.data.data.gamesPicked).toFixed(2)
+			"5-11": ($scope.championData511.data.data.totalDamageDealt / $scope.championData511.data.data.gamesPicked).toFixed(0),
+			"5-14": ($scope.championData514.data.data.totalDamageDealt / $scope.championData514.data.data.gamesPicked).toFixed(0)
 		})
 		$scope.stats.push({
 			"stat": "Magic Damage Dealt To Champions",
-			"5-11": ($scope.championData511.data.data.magicDamageDealtToChampions / $scope.championData511.data.data.gamesPicked).toFixed(2),
-			"5-14": ($scope.championData514.data.data.magicDamageDealtToChampions / $scope.championData514.data.data.gamesPicked).toFixed(2)
+			"5-11": ($scope.championData511.data.data.magicDamageDealtToChampions / $scope.championData511.data.data.gamesPicked).toFixed(0),
+			"5-14": ($scope.championData514.data.data.magicDamageDealtToChampions / $scope.championData514.data.data.gamesPicked).toFixed(0)
 		})
 		$scope.stats.push({
 			"stat": "Total Damage Dealt To Champions",
-			"5-11": ($scope.championData511.data.data.totalDamageDealtToChampions / $scope.championData511.data.data.gamesPicked).toFixed(2),
-			"5-14": ($scope.championData514.data.data.totalDamageDealtToChampions / $scope.championData514.data.data.gamesPicked).toFixed(2)
+			"5-11": ($scope.championData511.data.data.totalDamageDealtToChampions / $scope.championData511.data.data.gamesPicked).toFixed(0),
+			"5-14": ($scope.championData514.data.data.totalDamageDealtToChampions / $scope.championData514.data.data.gamesPicked).toFixed(0)
 		})
 		$scope.stats.push({
 			"stat": "Pick Rate",
