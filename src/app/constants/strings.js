@@ -54,7 +54,7 @@ var idToItems = {
 var idToChampions = {
     "1": "Annie",
     "3": "Galio",
-    "4": "Twisted Fate",
+    "4": "TwistedFate",
     "7": "LeBlanc",
     "8": "Vladimir",
     "9": "Fiddlesticks",
@@ -162,7 +162,7 @@ var itemsToId = {
 var championsToId = {
     "Annie": "1",
     "Galio": "3",
-    "Twisted Fate": "4",
+    "TwistedFate": "4",
     "LeBlanc": "7",
     "Vladimir": "8",
     "Fiddlesticks": "9",

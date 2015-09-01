@@ -43,6 +43,7 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 		$scope.currentId = id;
 		$scope.chartDrawn = false;
 		$scope.stats = [];
+		$scope.items = [];
 		$scope.itemStats = [];
 		$scope.showTable = false;
 		var data511 = {
