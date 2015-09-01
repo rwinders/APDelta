@@ -3,7 +3,7 @@ Riot Games API Challenge 2.0 - Analysis of AP item changes
 
 Built by Lahzerahl and Squid767, AP Delta is an application which procures and processes League of Legends match data to present the changes in AP item usage between patch 5.11 and 5.14.
 
-Visit our website here: [www.apdelta.co](www.apdelta.co) 
+Visit our website here: [www.apdelta.co](http://www.apdelta.co) 
 
 ###Tech Stack
 * Node.js
