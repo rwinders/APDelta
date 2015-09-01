@@ -1,7 +1,4 @@
 app.factory('APIPromiseService', [ '$http', function($http) {
-	var API_KEY = API_KEY;
-	var BASE_URL = "https://na.api.pvp.net/api/lol/";
-
 	//API CALLS
 
 	function requestDataPromise(url, data) {

@@ -9459,52 +9459,57 @@ body {
 }
 
 /* line 58, ../scss/app.scss */
+#item-chart-options {
+  margin-left: 175px;
+}
+
+/* line 62, ../scss/app.scss */
 #main-item-chart {
   width: 1170px;
   height: 800px;
   margin-bottom: 20px;
 }
 
-/* line 64, ../scss/app.scss */
+/* line 68, ../scss/app.scss */
 #champion-dropdown {
   width: 1000px;
 }
 
-/* line 68, ../scss/app.scss */
+/* line 72, ../scss/app.scss */
 #champion-dropdown li {
   width: 100px;
 }
 
-/* line 72, ../scss/app.scss */
+/* line 76, ../scss/app.scss */
 #region-dropdown {
   display: inline;
   width: 10%;
 }
 
-/* line 77, ../scss/app.scss */
+/* line 81, ../scss/app.scss */
 .push-down {
   height: 20px;
 }
 
-/* line 81, ../scss/app.scss */
+/* line 85, ../scss/app.scss */
 #patch-radio {
   display: inline;
   margin-left: 50px;
 }
 
-/* line 86, ../scss/app.scss */
+/* line 90, ../scss/app.scss */
 #item-dropdown {
   display: inline;
   margin-left: 20px;
   width: 25%;
 }
 
-/* line 92, ../scss/app.scss */
+/* line 96, ../scss/app.scss */
 .stats-row {
   margin-top: 15px;
 }
 
-/* line 96, ../scss/app.scss */
+/* line 100, ../scss/app.scss */
 #champion-name {
   text-align: center;
   margin-top: 0px;
@@ -9512,35 +9517,35 @@ body {
   background-color: #121212;
 }
 
-/* line 103, ../scss/app.scss */
+/* line 107, ../scss/app.scss */
 #champion-image {
   width: 100%;
 }
 
-/* line 107, ../scss/app.scss */
+/* line 111, ../scss/app.scss */
 .fa-chevron-up {
   margin-right: 5px;
   color: #2ecc71;
 }
 
-/* line 112, ../scss/app.scss */
+/* line 116, ../scss/app.scss */
 .fa-chevron-down {
   margin-right: 5px;
   color: #e74c3c;
 }
 
-/* line 117, ../scss/app.scss */
+/* line 121, ../scss/app.scss */
 .item-icon {
   width: 50px;
   height: 50px;
 }
 
-/* line 122, ../scss/app.scss */
+/* line 126, ../scss/app.scss */
 table tr th {
   text-align: center;
 }
 
-/* line 126, ../scss/app.scss */
+/* line 130, ../scss/app.scss */
 table tr td {
   text-align: center;
 }

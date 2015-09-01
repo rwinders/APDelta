@@ -241,8 +241,8 @@ app.controller('ChampionsController', ['$scope', '$rootScope', 'APDeltaService',
 		})
 		$scope.stats.push({
 			"stat": "Pick Rate",
-			"5-11": ((($scope.championData511.data.data.gamesPicked / totalGames[$scope.region + "-" + $scope.patch]) * 100).toFixed(2)) + "%",
-			"5-14": ((($scope.championData514.data.data.gamesPicked / totalGames[$scope.region + "-" + $scope.patch]) * 100).toFixed(2)) + "%"
+			"5-11": ((($scope.championData511.data.data.gamesPicked / totalGames[$scope.region + "-5-11"]) * 100).toFixed(2)) + "%",
+			"5-14": ((($scope.championData514.data.data.gamesPicked / totalGames[$scope.region + "-5-14"]) * 100).toFixed(2)) + "%"
 		})
 		$scope.stats.push({
 			"stat": "Games Picked",

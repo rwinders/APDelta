@@ -1,4 +1,3 @@
-var API_KEY = "522499d5-cb38-4e8c-a979-adf2526ab310";
 var SERVER_URL = "http://127.0.0.1:3000";
 var totalGames = {
     "na-5-11": 9598,
