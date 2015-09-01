@@ -27,7 +27,7 @@ app.use("/js", express.static(__dirname + "/src/js"));
 app.use("/app", express.static(__dirname + "/src/app"));
 app.use("/images", express.static(__dirname + "/src/images"));
 
-var raw_credentials = fs.readFileSync('db_scripts/credentials.json', 'utf8');
+var raw_credentials = fs.readFileSync('credentials.json', 'utf8');
 var credentials = JSON.parse(raw_credentials);
 var uri = credentials.MongoUrl;
 
